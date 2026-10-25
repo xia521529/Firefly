@@ -48,10 +48,11 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	local: {
 		playlist: [
 			{
-				name: "使一颗心免于哀伤",
-				artist: "知更鸟 / HOYO-MiX / Chevy",
-				url: "/assets/music/使一颗心免于哀伤-哼唱.mp3",
-				cover: "/assets/music/cover/109951169585655912.webp",
+				name: "Summer",
+				artist: "久石让",
+				// 音频需自行放置：public/assets/music/summer.mp3
+				// 换歌时改 name / artist 和这里的路径即可，支持 mp3、m4a、ogg
+				url: "/assets/music/summer.mp3",
 				lrc: "",
 			},
 		],
