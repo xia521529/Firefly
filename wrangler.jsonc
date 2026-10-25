@@ -6,6 +6,11 @@
 	"compatibility_date": "2026-10-24",
 	// Astro 运行需要 Node 内置模块（crypto、buffer 等），必须开启
 	"compatibility_flags": ["nodejs_compat"],
+	// 构建时使用的 Node 版本，必须满足 package.json 的 engines（>=22.23.0）
+	// 不设的话 Cloudflare 可能用较旧的默认版本，导致构建告警或失败
+	"vars": {
+		"NODE_VERSION": "22"
+	},
 	"assets": {
 		"directory": "./dist"
 	}
