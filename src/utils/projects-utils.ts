@@ -42,7 +42,11 @@ export async function resolveProjectImageAbsolute(
 	if (/^(?:https?:)?\/\//i.test(sameOrigin) || sameOrigin.startsWith("data:")) {
 		return sameOrigin;
 	}
-	return new URL(url(sameOrigin), siteConfig.site_url).toString();
+	// site_url 留空时回退到本地基址，避免 new URL("") 抛错；填写正式域名后自动生效
+	return new URL(
+		url(sameOrigin),
+		siteConfig.site_url || "http://localhost:4321",
+	).toString();
 }
 
 // astro-icon 图标名格式：namespace:name

@@ -10,7 +10,8 @@ export async function GET(context: APIContext): Promise<Response> {
 	const includeContent = (siteConfig.feed?.contentMode ?? "full") === "full";
 	const blog = await getSortedPosts();
 	const entries = await renderFeedEntries(blog, { includeContent });
-	const site = context.site ?? new URL(siteConfig.site_url);
+	// site_url 留空时回退到本地基址，避免 new URL("") 抛错；填写正式域名后自动生效
+	const site = context.site ?? new URL(siteConfig.site_url || "http://localhost:4321");
 	const xml = buildAtomFeed({
 		site,
 		title: siteConfig.title,

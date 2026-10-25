@@ -5,7 +5,8 @@ export const announcementConfig: AnnouncementConfig = {
 	title: "",
 
 	// 公告内容
-	content: "欢迎来到我的博客！这是一则示例公告。",
+	content:
+		"夜航船已靠岸。这里是一座隐于仲夏的渡口，船上载着些收集来的星光、旧物与偶然拾得的碎片。",
 
 	// 是否允许用户关闭公告
 	closable: true,

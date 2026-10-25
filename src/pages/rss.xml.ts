@@ -22,7 +22,8 @@ export async function GET(context: APIContext): Promise<Response> {
 	return rss({
 		title: siteConfig.title,
 		description: siteConfig.subtitle || "No description",
-		site: context.site ?? "https://firefly.cuteleaf.cn",
+		// 优先使用构建期 site；site_url 留空时回退到本地基址，填写正式域名后自动生效
+		site: context.site?.toString() ?? (siteConfig.site_url || "http://localhost:4321"),
 		customData: `<templateTheme>Firefly</templateTheme>
 		<templateThemeVersion>${pkg.version}</templateThemeVersion>
 		<templateThemeUrl>https://github.com/CuteLeaf/Firefly</templateThemeUrl>

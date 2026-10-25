@@ -9,10 +9,10 @@ export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/avatar.avif",
 
 	// 名字
-	name: "XiaYe",
+	name: "MidSummer",
 
 	// 个人签名
-	bio: "Hello, I'm XiaYe.",
+	bio: "I'm MidSummer",
 
 	// 链接配置
 	// 已经预装的图标集：fa7-brands，fa7-regular，fa7-solid，material-symbols，simple-icons
@@ -27,12 +27,13 @@ export const profileConfig: ProfileConfig = {
 			url: "https://github.com/CuteLeaf",
 			showName: false,
 		},
-		{
-			name: "Email",
-			icon: "fa7-solid:envelope",
-			url: "mailto:xiaye@msn.com",
-			showName: false,
-		},
+		// 邮箱暂不公开。需要时取消下面的注释并填入自己的地址
+		// {
+		// 	name: "Email",
+		// 	icon: "fa7-solid:envelope",
+		// 	url: "mailto:你的邮箱@example.com",
+		// 	showName: false,
+		// },
 		{
 			name: "RSS",
 			icon: "fa7-solid:rss",

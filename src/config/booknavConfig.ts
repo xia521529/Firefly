@@ -146,9 +146,9 @@ export const booknavConfig: BooknavGroup[] = [
 				weight: 10,
 			},
 			{
-				title: "夏夜流萤",
-				url: "https://blog.cuteleaf.cn",
-				desc: "飞萤之火自无梦的长夜亮起",
+				title: "Night Moor",
+				url: "/",
+				desc: "本站 · 泊于仲夏的渡口",
 				weight: 9,
 			},
 		],

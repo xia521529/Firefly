@@ -12,11 +12,8 @@ import { buildProfilePage } from "@/utils/schema-utils";
 
 const aboutPost = await getEntry("spec", "about");
 
-if (!aboutPost) {
-	throw new Error("About page content not found");
-}
-
-const { Content } = await render(aboutPost);
+// 关于页内容可缺省：缺失时降级为占位提示，不阻断整站构建
+const Content = aboutPost ? (await render(aboutPost)).Content : null;
 
 const avatarUrl = await getAuthorAvatarUrl();
 const jsonLd = buildProfilePage({
@@ -32,7 +29,7 @@ const jsonLd = buildProfilePage({
     <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-9 py-6 relative w-full ">
             <Markdown class="mt-2">
-                <Content />
+                {Content ? <Content /> : <p>这里还空着，内容正在路上。</p>}
             </Markdown>
         </div>
     </div>

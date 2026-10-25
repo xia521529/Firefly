@@ -67,7 +67,10 @@ const adapter = process.env.CF_WORKERS
 
 // https://astro.build/config
 export default defineConfig({
-	site: siteConfig.site_url,
+	// site_url 留空时用本地基址兜底：保证 Astro.site 始终有值，
+	// 避免 canonical/og:url/RSS 出现 "undefined"、以及 sitemap 因缺 site 而构建失败。
+	// 正式上线前务必在 siteConfig.site_url 填入真实域名。
+	site: siteConfig.site_url || "http://localhost:4321",
 
 	base: "/",
 	trailingSlash: "always",

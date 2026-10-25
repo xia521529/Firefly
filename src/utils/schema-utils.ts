@@ -1,6 +1,10 @@
 import type { ProfileConfig, SiteConfig } from "@/types/config";
 import { getSearchUrl, url } from "./url-utils";
 
+// site_url 留空（尚未配置正式域名）时的兜底基址，避免 new URL("") 抛错。
+// 只影响结构化数据里的绝对链接，填写 siteConfig.site_url 后自动失效。
+const FALLBACK_BASE = "http://localhost:4321";
+
 /**
  * 把 src 解析成绝对 URL 字符串。
  * - http/https、协议相对（//）、data: 原样返回；
@@ -30,7 +34,7 @@ export function toAbsoluteUrl(
 		);
 		return null;
 	}
-	const baseUrl = base instanceof URL ? base : new URL(base);
+	const baseUrl = base instanceof URL ? base : new URL(base || FALLBACK_BASE);
 	return new URL(url(src), baseUrl).toString();
 }
 
@@ -81,7 +85,7 @@ export interface PersonEntityOpts {
 // 使 WebSite/Person 的 @id、url 在子路径部署（base 非空）时也正确。
 // 注意：siteConfig.site_url 应填站点 origin（根，不含子路径 base），子路径由 BASE_URL 处理。
 function resolveSiteRoot(site: URL | string): string {
-	const baseUrl = site instanceof URL ? site : new URL(site);
+	const baseUrl = site instanceof URL ? site : new URL(site || FALLBACK_BASE);
 	return new URL(url("/"), baseUrl).toString();
 }
 

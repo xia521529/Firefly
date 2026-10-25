@@ -47,3 +47,6 @@ package/
 .codex*
 .claude
 .mimocode
+
+# 本地工作记录与备份（含临时文件、被删素材的备份，不要提交）
+.workbuddy/

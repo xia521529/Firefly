@@ -14,6 +14,15 @@ const projectImages = import.meta.glob<ImageMetadata>(
 );
 
 // 查找 src 内相对路径对应的 ImageMetadata；找不到返回 null。
+// site_url 留空时（尚未配置正式域名）回退到本地基址，避免 new URL("") 抛错。
+// 该兜底只作用于构建产物中的绝对链接，正式部署前请填写 siteConfig.site_url。
+const FALLBACK_BASE = "http://localhost:4321";
+const siteBase = (): string => siteConfig.site_url || FALLBACK_BASE;
+
+// 调用方可能直接传入空的 site_url（如文章页），统一在此归一化，避免 new URL("") 抛错
+const normalizeBase = (base: URL | string): URL | string =>
+	base instanceof URL ? base : base || FALLBACK_BASE;
+
 export async function loadLocalImage(
 	src: string,
 	basePath: string,
@@ -54,7 +63,7 @@ export async function toAbsoluteImageInfo(
 		return { url: src };
 	}
 	if (src.startsWith("/")) {
-		return { url: new URL(url(src), base).toString() };
+		return { url: new URL(url(src), normalizeBase(base)).toString() };
 	}
 	return getLocalImageInfo(src, basePath, base);
 }
@@ -81,7 +90,7 @@ async function getLocalImageInfo(
 	const img = await loadLocalImage(src, basePath);
 	if (!img) return null;
 	return {
-		url: new URL(url(img.src), base).toString(),
+		url: new URL(url(img.src), normalizeBase(base)).toString(),
 		width: img.width,
 		height: img.height,
 	};
@@ -92,7 +101,7 @@ async function getLocalImageInfo(
  * 固定用 profileConfig.avatar + basePath=""（相对 src/）。
  */
 export async function getAuthorAvatarUrl(): Promise<string | null> {
-	return toAbsoluteImageUrl(profileConfig.avatar, "", siteConfig.site_url);
+	return toAbsoluteImageUrl(profileConfig.avatar, "", siteBase());
 }
 
 // 解析 favicon 的 sizes（如 "192x192"）为宽高
@@ -134,9 +143,9 @@ async function getFaviconAsLogo(): Promise<{
 	if (/^https?:|^\/\//.test(favicon.src) || favicon.src.startsWith("data:")) {
 		logoUrl = favicon.src;
 	} else if (favicon.src.startsWith("/")) {
-		logoUrl = new URL(url(favicon.src), siteConfig.site_url).toString();
+		logoUrl = new URL(url(favicon.src), siteBase()).toString();
 	} else {
-		logoUrl = await toAbsoluteImageUrl(favicon.src, "", siteConfig.site_url);
+		logoUrl = await toAbsoluteImageUrl(favicon.src, "", siteBase());
 	}
 	if (!logoUrl) return null;
 
@@ -181,7 +190,7 @@ async function computeSiteLogo(): Promise<{
 	if (logo) {
 		if (logo.type === "url") return { url: logo.value };
 		if (logo.type === "image") {
-			const info = await getLocalImageInfo(logo.value, "", siteConfig.site_url);
+			const info = await getLocalImageInfo(logo.value, "", siteBase());
 			return info
 				? { url: info.url, width: info.width, height: info.height }
 				: null;

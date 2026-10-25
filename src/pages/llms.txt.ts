@@ -90,7 +90,8 @@ const KEY_PAGES: KeyPage[] = [
 ];
 
 export const GET: APIRoute = async ({ site }) => {
-	const base = site ?? new URL(siteConfig.site_url);
+	// site_url 留空时回退到本地基址，避免 new URL("") 抛错；填写正式域名后自动生效
+	const base = site ?? new URL(siteConfig.site_url || "http://localhost:4321");
 	const abs = (path: string) => new URL(url(path), base).href;
 
 	const enabledPages = KEY_PAGES.filter(

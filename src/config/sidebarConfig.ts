@@ -187,11 +187,12 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 组件专属配置（广告内容直接在此配置）
 			specificConfig: {
 				ad: {
+					// 广告位目前关闭，图片与跳转链接待自行填写
 					image: {
 						src: "/assets/images/ad/ad1.webp",
 						alt: "广告横幅",
-						link: "https://haoka.lot-ml.com/plugreg.html?agentid=1423316",
-						external: true,
+						link: "",
+						external: false,
 					},
 					// 是否允许关闭广告
 					closable: false,
