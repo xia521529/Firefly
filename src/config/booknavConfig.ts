@@ -146,7 +146,7 @@ export const booknavConfig: BooknavGroup[] = [
 				weight: 10,
 			},
 			{
-				title: "Night Moor",
+				title: "NightMoor",
 				url: "/",
 				desc: "本站 · 泊于仲夏的渡口",
 				weight: 9,

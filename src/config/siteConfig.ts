@@ -42,10 +42,10 @@ const pages = resolvePageToggles({
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "仲夏夜泊",
+	title: "NightMoor",
 
 	// 站点副标题
-	subtitle: "Night Moor",
+	subtitle: "仲夏夜泊",
 
 	// 站点 URL
 	// 留空：待正式域名确定后填入，例如 "https://example.com"
@@ -56,8 +56,8 @@ export const siteConfig: SiteConfig = {
 
 	// 站点关键词
 	keywords: [
+		"NightMoor",
 		"仲夏夜泊",
-		"Night Moor",
 		"资源分享",
 		"软件工具",
 		"素材",
@@ -115,10 +115,10 @@ export const siteConfig: SiteConfig = {
 			type: "image",
 			value: "assets/images/logo/firefly-light.png",
 			valueDark: "assets/images/logo/firefly-dark.png",
-			alt: "🍀",
+			alt: "NightMoor",
 		},
 		// 导航栏标题
-		title: "Night Moor",
+		title: "NightMoor",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
