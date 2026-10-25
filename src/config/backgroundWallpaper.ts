@@ -102,7 +102,8 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				{
 					name: "GitHub",
 					icon: "fa7-brands:github",
-					url: "https://github.com/CuteLeaf/Firefly",
+					// 指向本站仓库/主页，不再使用主题作者的地址
+					url: "https://github.com/xia521529",
 					showName: true,
 				},
 				// 邮箱暂不公开。需要时取消下面的注释并填入自己的地址
@@ -114,7 +115,8 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				{
 					name: "Sponsor",
 					icon: "material-symbols:favorite",
-					url: "https://blog.cuteleaf.cn/sponsor/",
+					// 指向本站打赏页，不再跳到主题作者的打赏页
+					url: "/sponsor/",
 				},
 				{
 					name: "RSS",
