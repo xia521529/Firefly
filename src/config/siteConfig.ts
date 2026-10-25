@@ -47,9 +47,9 @@ export const siteConfig: SiteConfig = {
 	// 站点副标题
 	subtitle: "仲夏夜泊",
 
-	// 站点 URL
-	// 留空：待正式域名确定后填入，例如 "https://example.com"
-	site_url: "",
+	// 站点 URL（正式域名，末尾不要带斜杠）
+	// 影响 canonical / og:url / sitemap / RSS / 页脚站点域名，必须与实际访问域名一致
+	site_url: "https://nightmoor.xyz",
 
 	// 站点描述
 	description: "这是我的资源分享网站。",
