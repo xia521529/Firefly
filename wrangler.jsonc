@@ -1,6 +1,10 @@
 {
+	// Cloudflare 项目名：只支持英文小写字母、数字和连字符，不能用中文
+	// 想换成自己的名字就改这里，同时要在 Cloudflare 后台保持一致
 	"name": "firefly",
-	"compatibility_date": "2025-01-01",
+	// 兼容日期：用新日期才能拿到较新的运行时行为
+	"compatibility_date": "2026-10-24",
+	// Astro 运行需要 Node 内置模块（crypto、buffer 等），必须开启
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"directory": "./dist"
