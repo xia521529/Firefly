@@ -31,7 +31,9 @@ export const fontsList: FontDefinition[] = [
 		name: "Zen Maru Gothic",
 		cssVariable: "--font-zen-maru-gothic",
 		provider: "fontsource",
-		weights: ["300", "400", "500", "600", "700"],
+		// 只保留实际用到的两档：横幅标题 bold(700)、正文回退(400)
+		// 减少字体文件与 @font-face 数量，弱网首屏更轻
+		weights: ["400", "700"],
 		styles: ["normal"],
 		subsets: ["latin", "cyrillic"],
 		fallbacks: ["sans-serif"],
@@ -40,7 +42,9 @@ export const fontsList: FontDefinition[] = [
 		name: "Inter",
 		cssVariable: "--font-inter",
 		provider: "fontsource",
-		weights: ["300", "400", "500", "600", "700"],
+		// 只保留实际用到的两档：横幅标题 bold(700)、正文回退(400)
+		// 减少字体文件与 @font-face 数量，弱网首屏更轻
+		weights: ["400", "700"],
 		styles: ["normal"],
 		subsets: ["latin", "cyrillic"],
 		fallbacks: ["sans-serif"],

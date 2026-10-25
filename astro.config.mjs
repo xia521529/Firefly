@@ -136,8 +136,9 @@ export default defineConfig({
 			smoothScrolling: false,
 			cache: true,
 			preload: {
-				hover: true,
-				visible: true,
+				hover: true, // 鼠标悬停时预取，保留即可
+				// 视口内链接全部预取：弱网/移动端首屏会并发十几个请求，关掉
+				visible: false,
 			},
 			accessibility: true,
 			updateHead: true,
