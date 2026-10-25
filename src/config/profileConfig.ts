@@ -24,7 +24,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "GitHub",
 			icon: "fa7-brands:github",
-			url: "https://github.com/CuteLeaf",
+			url: "https://github.com/xia521529",
 			showName: false,
 		},
 		// 邮箱暂不公开。需要时取消下面的注释并填入自己的地址
